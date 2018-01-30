@@ -1,0 +1,27 @@
+{
+  "name": "ro/ro-aliaseable-object",
+  "description": "Aliaseable object",
+  "keywords": [
+    "alias",
+    "transliteration"
+  ],
+  "homepage": "https://github.com/fagcinsk/ro-aliaseable-object",
+  "type": "library",
+  "license": "GNU GPL",
+  "authors": [
+    {
+      "name": "Yudin M.",
+      "email": "fagci.nsk@gmail.com",
+      "homepage": "https://github.com/fagcinsk/"
+    }
+  ],
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "AliaseableObject\\": "src/"
+    }
+  }
+}
+
+
