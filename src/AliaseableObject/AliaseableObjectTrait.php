@@ -7,8 +7,6 @@ namespace AliaseableObject;
  * Trait AliaseableObjectTrait
  * @package AliasGenerator
  *
- * @method getModelName()
- * @method getId()
  */
 trait AliaseableObjectTrait
 {
