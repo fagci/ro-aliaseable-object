@@ -13,6 +13,7 @@
 
 Вариант использования:
 
+Расширение базового trait для получения названия модели
 ```php
 use AliaseableObject\AliaseableObjectTrait;
 
@@ -27,6 +28,7 @@ trait AliaseableBaseObjectTrait
 }
 ```
 
+Расширение trait для определения способа формирования алиаса для объектов типа Geo
 ```php
 trait AliaseableGeoTrait
 {
@@ -49,6 +51,7 @@ trait AliaseableGeoTrait
 }
 ```
 
+Использование AliaseableObject в модели
 ```php
 class TGeoObject extends GeoObject implements AliaseableObjectInterface
 {
@@ -58,6 +61,7 @@ class TGeoObject extends GeoObject implements AliaseableObjectInterface
 }    
 ```
 
+Обновление алиаса для объекта
 ```php
 $geoObject->updateAlias();
 ```
