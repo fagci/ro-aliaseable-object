@@ -45,21 +45,16 @@ trait AliaseableObjectTrait
             return null;
         }
 
-        $aliasEntry = $this->_getAliasEntry(true);
-
-        $alias = $this->createSimpleAliasString();
-
-        if (null === $aliasEntry) {
-            return;
+        if (null === ($aliasEntry = $this->getAliasEntry())) {
+            $aliasEntry = $this->createAliasEntry();
+            $aliasEntry->setAlias($this->createSimpleAliasString());
         }
 
-        $aliasEntry->setAlias($alias);
+        $isDuplicatesExists = !empty($aliasEntry->getDuplicates());
 
-        $duplicates = $aliasEntry->getDuplicates();
-
-        $alias = empty($duplicates) ? $alias : $this->createEnhancedAliasString();
-
-        $aliasEntry->setAlias($alias);
+        if ($isDuplicatesExists) {
+            $aliasEntry->setAlias($this->createEnhancedAliasString());
+        }
 
         $aliasEntry->save();
     }
