@@ -94,7 +94,8 @@ trait AliaseableObjectTrait
      */
     private function _updateAliasPreventDuplicates() {
         $alias      = $this->createSimpleAliasString();
-        $duplicates = $this->_getAliasEntry(true)->getDuplicates();
+        $aliasEntry = $this->_getAliasEntry(true);
+        $duplicates = $aliasEntry->getDuplicates();
 
         $isWithoutDuplicates = \count($duplicates) === 0;
 
@@ -102,9 +103,9 @@ trait AliaseableObjectTrait
             $alias = $this->createEnhancedAliasString();
         }
 
-        $this->setAlias($alias);
+        $aliasEntry->setAlias($alias);
 
-        $this->save();
+        $aliasEntry->save();
     }
 
     /**
