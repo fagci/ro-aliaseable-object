@@ -6,7 +6,6 @@ namespace AliaseableObject;
 /**
  * Trait AliaseableObjectTrait
  * @package AliasGenerator
- *
  */
 trait AliaseableObjectTrait
 {
@@ -93,13 +92,17 @@ trait AliaseableObjectTrait
      * Обновить алиас с предотвращением дубликатов если они имеются
      */
     private function _updateAliasPreventDuplicates() {
+        /** @var AliasEntryTrait|AliasEntryInterface $aliasEntry */
         $alias      = $this->createSimpleAliasString();
         $aliasEntry = $this->_getAliasEntry(true);
+
+        if (null === $aliasEntry) {
+            return;
+        }
+
         $duplicates = $aliasEntry->getDuplicates();
 
-        $isWithoutDuplicates = \count($duplicates) === 0;
-
-        if (!$isWithoutDuplicates) {
+        if (empty($duplicates)) {
             $alias = $this->createEnhancedAliasString();
         }
 
