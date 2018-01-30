@@ -117,7 +117,7 @@ trait AliaseableObjectTrait
         $modelName = $this->getModelName();
         $modelId   = $this->getId();
 
-        $existingEntry = static::getEntry($modelName, $modelId);
+        $existingEntry = self::getEntry($modelName, $modelId);
 
         if ($createNewIfNotFound && null === $existingEntry) {
             $existingEntry = $this->updateAlias();
