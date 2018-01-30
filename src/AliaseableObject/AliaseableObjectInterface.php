@@ -16,5 +16,5 @@ interface AliaseableObjectInterface
 
     public function getAliasEntry();
 
-    public function createAliasEntry();
+    public function createAliasEntry(string $alias = null);
 }
