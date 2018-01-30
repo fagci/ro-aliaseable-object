@@ -9,7 +9,7 @@ interface AliasEntryInterface
      * @param $modelId
      * @return AliasEntryTrait
      */
-    public static function getEntry(string $modelName, $modelId): AliasEntryTrait;
+    public static function getEntry(string $modelName, $modelId);
 
     /**
      * @param string $modelName
@@ -17,7 +17,7 @@ interface AliasEntryInterface
      * @param null|string $alias
      * @return AliasEntryTrait
      */
-    public static function createEntry(string $modelName, $modelId, $alias = null): AliasEntryTrait;
+    public static function createEntry(string $modelName, $modelId, $alias = null);
 
     public function delete();
 
