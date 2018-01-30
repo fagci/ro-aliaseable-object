@@ -84,22 +84,11 @@ class TGeoObject extends GeoObject implements AliaseableObjectInterface
         return parent::save();
     }
 
-    /**
-     * @param string $modelName
-     * @param $modelId
-     * @return AliasEntryTrait
-     */
     public static function getEntry(string $modelName, $modelId)
     {
         return self::Mapper()->findOne(['model' => $modelName, 'model_id' => $modelId]);
     }
 
-    /**
-     * @param string $modelName
-     * @param $modelId
-     * @param null|string $alias
-     * @return AliasEntryTrait
-     */
     public static function createEntry(string $modelName, $modelId, $alias = null)
     {
         $instance = new self();
@@ -109,65 +98,41 @@ class TGeoObject extends GeoObject implements AliaseableObjectInterface
         return $instance;
     }
 
-    /**
-     * @return AliasEntryTrait[]
-     */
     public function getDuplicates()
     {
         self::Mapper()->findAll(['model' => $this->model, 'alias' => $this->alias]);
     }
 
-    /**
-     * @return mixed
-     */
     public function getModelId()
     {
         return $this->model_id;
     }
 
-    /**
-     * @param mixed $modelId
-     */
     public function setModelId($modelId)
     {
         $this->model_id = $modelId;
     }
 
-    /**
-     * @return string
-     */
     public function getModelName(): string
     {
         return $this->model;
     }
 
-    /**
-     * @param string $modelName
-     */
     public function setModelName(string $modelName)
     {
         $this->model = $modelName;
     }
 
-    /**
-     * @return string
-     */
     public function getAlias(): string
     {
         return $this->alias;
     }
 
-    /**
-     * @param string $alias
-     */
     public function setAlias(string $alias)
     {
         $this->alias = $alias;
     }
 
-    /**
-     * @return null|AliaseableObjectInterface|AliaseableObjectTrait
-     */
     public function getObject()
     {
         $className = [
