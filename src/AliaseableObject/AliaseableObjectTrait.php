@@ -47,8 +47,9 @@ trait AliaseableObjectTrait
 
         if (null === ($aliasEntry = $this->getAliasEntry())) {
             $aliasEntry = $this->createAliasEntry();
-            $aliasEntry->setAlias($this->createSimpleAliasString());
         }
+
+        $aliasEntry->setAlias($this->createSimpleAliasString());
 
         $isDuplicatesExists = !empty($aliasEntry->getDuplicates());
 
