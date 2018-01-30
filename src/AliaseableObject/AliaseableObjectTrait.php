@@ -15,9 +15,9 @@ trait AliaseableObjectTrait
      * @return mixed|string
      */
     final public function getAlias() {
-        $existingEntry = AliasEntryTrait::getEntryOrCreateNew($this->getModelName(), $this->getId());
+        $existingEntry = $this->_getAliasEntry(true);
 
-        return null !== $existingEntry ? $existingEntry->getAlias() : 'e2';
+        return null !== $existingEntry ? $existingEntry->getAlias() : '-alias-not-found-';
     }
 
     /**
@@ -93,8 +93,7 @@ trait AliaseableObjectTrait
      */
     private function _updateAliasPreventDuplicates() {
         /** @var AliasEntryTrait|AliasEntryInterface $aliasEntry */
-        $alias      = $this->createSimpleAliasString();
-        $aliasEntry = $this->_getAliasEntry(true);
+        $aliasEntry = $this->_getAliasEntry();
 
         if (null === $aliasEntry) {
             return;
@@ -102,9 +101,7 @@ trait AliaseableObjectTrait
 
         $duplicates = $aliasEntry->getDuplicates();
 
-        if (empty($duplicates)) {
-            $alias = $this->createEnhancedAliasString();
-        }
+        $alias = empty($duplicates) ? $this->createSimpleAliasString() : $this->createEnhancedAliasString();
 
         $aliasEntry->setAlias($alias);
 
