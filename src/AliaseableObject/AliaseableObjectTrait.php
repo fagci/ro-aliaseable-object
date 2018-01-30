@@ -10,7 +10,7 @@ namespace AliaseableObject;
  * @method getModelName()
  * @method getId()
  */
-abstract class AliaseableObject implements AliaseableObjectInterface
+trait AliaseableObjectTrait
 {
     /**
      * Получение алиаса

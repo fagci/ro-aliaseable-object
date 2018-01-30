@@ -1,6 +1,5 @@
 {
   "name": "ro/ro-aliaseable-object",
-  "version":"0.1",
   "description": "Aliaseable object",
   "keywords": [
     "alias",

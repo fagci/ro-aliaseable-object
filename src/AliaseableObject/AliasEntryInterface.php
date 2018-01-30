@@ -29,7 +29,7 @@ interface AliasEntryInterface
     public function getDuplicates(): array;
 
     /**
-     * @return null|AliaseableObjectInterface|AliaseableObject
+     * @return null|AliaseableObjectInterface|AliaseableObjectTrait
      */
     public function getObject();
 
