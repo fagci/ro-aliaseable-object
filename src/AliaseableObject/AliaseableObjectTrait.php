@@ -55,7 +55,7 @@ trait AliaseableObjectTrait
      *
      * @return mixed
      */
-    private function createSimpleAliasString() {
+    protected function createSimpleAliasString() {
         return $this->getModelName() . '-' . $this->getId();
     }
 
@@ -64,7 +64,7 @@ trait AliaseableObjectTrait
      *
      * @return string
      */
-    private function createEnhancedAliasString(): string {
+    protected function createEnhancedAliasString(): string {
         $simpleAliasString = $this->createSimpleAliasString();
         return $this->useCollisionPreventingRule($simpleAliasString);
     }
