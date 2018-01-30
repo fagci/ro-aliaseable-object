@@ -45,7 +45,19 @@ trait AliaseableObjectTrait
             return null;
         }
 
-        $this->_updateAliasPreventDuplicates();
+        $aliasEntry = $this->_getAliasEntry(true);
+
+        if (null === $aliasEntry) {
+            return;
+        }
+
+        $duplicates = $aliasEntry->getDuplicates();
+
+        $alias = empty($duplicates) ? $this->createSimpleAliasString() : $this->createEnhancedAliasString();
+
+        $aliasEntry->setAlias($alias);
+
+        $aliasEntry->save();
     }
 
 
@@ -89,26 +101,6 @@ trait AliaseableObjectTrait
     }
 
     /**
-     * Обновить алиас с предотвращением дубликатов если они имеются
-     */
-    private function _updateAliasPreventDuplicates() {
-        /** @var AliasEntryTrait|AliasEntryInterface $aliasEntry */
-        $aliasEntry = $this->_getAliasEntry();
-
-        if (null === $aliasEntry) {
-            return;
-        }
-
-        $duplicates = $aliasEntry->getDuplicates();
-
-        $alias = empty($duplicates) ? $this->createSimpleAliasString() : $this->createEnhancedAliasString();
-
-        $aliasEntry->setAlias($alias);
-
-        $aliasEntry->save();
-    }
-
-    /**
      * Получение записи с алиасом
      *
      * @param bool $createNewIfNotFound
@@ -118,7 +110,7 @@ trait AliaseableObjectTrait
         $existingEntry = $this->getAliasEntry();
 
         if ($createNewIfNotFound && null === $existingEntry) {
-            $existingEntry = $this->updateAlias();
+            $existingEntry = $this->createAliasEntry();
         }
         return $existingEntry;
     }

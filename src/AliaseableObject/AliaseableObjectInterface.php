@@ -15,4 +15,6 @@ interface AliaseableObjectInterface
     public function getId();
 
     public function getAliasEntry();
+
+    public function createAliasEntry();
 }
