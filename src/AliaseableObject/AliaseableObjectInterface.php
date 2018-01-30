@@ -13,4 +13,6 @@ interface AliaseableObjectInterface
      * @return string|int
      */
     public function getId();
+
+    public function getAliasEntry();
 }
