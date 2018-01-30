@@ -53,7 +53,9 @@ trait AliaseableObjectTrait
             return;
         }
 
-        $duplicates = $aliasEntry->getDuplicates($alias);
+        $aliasEntry->setAlias($alias);
+
+        $duplicates = $aliasEntry->getDuplicates();
 
         $alias = empty($duplicates) ? $alias : $this->createEnhancedAliasString();
 
