@@ -26,7 +26,7 @@ interface AliasEntryInterface
     /**
      * @return AliasEntryTrait[]
      */
-    public function getDuplicates(): array;
+    public function getDuplicates();
 
     /**
      * @return null|AliaseableObjectInterface|AliaseableObjectTrait
