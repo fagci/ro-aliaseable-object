@@ -47,19 +47,20 @@ trait AliaseableObjectTrait
 
         $aliasEntry = $this->_getAliasEntry(true);
 
+        $alias = $this->createSimpleAliasString();
+
         if (null === $aliasEntry) {
             return;
         }
 
-        $duplicates = $aliasEntry->getDuplicates();
+        $duplicates = $aliasEntry->getDuplicates($alias);
 
-        $alias = empty($duplicates) ? $this->createSimpleAliasString() : $this->createEnhancedAliasString();
+        $alias = empty($duplicates) ? $alias : $this->createEnhancedAliasString();
 
         $aliasEntry->setAlias($alias);
 
         $aliasEntry->save();
     }
-
 
     /**
      * Создание обычного алиаса
