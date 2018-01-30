@@ -16,7 +16,7 @@ trait AliaseableObjectTrait
      * @return mixed|string
      */
     final public function getAlias() {
-        $existingEntry = AliasEntry::getEntryOrCreateNew($this->getModelName(), $this->getId());
+        $existingEntry = AliasEntryTrait::getEntryOrCreateNew($this->getModelName(), $this->getId());
 
         return null !== $existingEntry ? $existingEntry->getAlias() : 'e2';
     }
@@ -111,13 +111,13 @@ trait AliaseableObjectTrait
      * Получение записи с алиасом
      *
      * @param bool $createNewIfNotFound
-     * @return AliasEntry|null
+     * @return AliasEntryTrait|null
      */
     private function _getAliasEntry($createNewIfNotFound = false) {
         $modelName = $this->getModelName();
         $modelId   = $this->getId();
 
-        $existingEntry = AliasEntry::getEntry($modelName, $modelId);
+        $existingEntry = AliasEntryTrait::getEntry($modelName, $modelId);
 
         if ($createNewIfNotFound && null === $existingEntry) {
             $existingEntry = $this->updateAlias();

@@ -7,24 +7,24 @@ interface AliasEntryInterface
     /**
      * @param string $modelName
      * @param $modelId
-     * @return AliasEntry
+     * @return AliasEntryTrait
      */
-    public static function getEntry(string $modelName, $modelId): AliasEntry;
+    public static function getEntry(string $modelName, $modelId): AliasEntryTrait;
 
     /**
      * @param string $modelName
      * @param $modelId
      * @param null|string $alias
-     * @return AliasEntry
+     * @return AliasEntryTrait
      */
-    public static function createEntry(string $modelName, $modelId, $alias = null): AliasEntry;
+    public static function createEntry(string $modelName, $modelId, $alias = null): AliasEntryTrait;
 
     public function delete();
 
     public function save();
 
     /**
-     * @return AliasEntry[]
+     * @return AliasEntryTrait[]
      */
     public function getDuplicates(): array;
 

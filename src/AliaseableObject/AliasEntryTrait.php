@@ -2,7 +2,7 @@
 
 namespace AliaseableObject;
 
-abstract class AliasEntry implements AliasEntryInterface
+trait AliasEntryTrait
 {
     public static function getEntryOrCreateNew($modelName, $modelId) {
         $aliasEntry = self::getEntry($modelName, $modelId);
