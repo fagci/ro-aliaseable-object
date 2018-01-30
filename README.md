@@ -65,9 +65,6 @@ class TGeoObject extends GeoObject implements AliaseableObjectInterface
 
 Расширение модели ORM хранилища алиасов
 ```php
-    /**
-     * Сохраняет объект в БД.
-     */
     public function save()
     {
         $uid = Vault::getUser()->getId();
